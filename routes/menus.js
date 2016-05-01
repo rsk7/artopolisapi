@@ -40,7 +40,7 @@ router.delete("/:id", function(req, res, next) {
   });
 });
 
-router.pose("/", function(req, res, next) {
+router.post("/", function(req, res, next) {
   var menu = new MenuModel(req.body);
   menu.save(function(err) {
     if (err) next(err);
