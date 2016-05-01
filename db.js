@@ -6,18 +6,18 @@ console.log("Connecting: " + mongoCreds.url);
 mongoose.connect(mongoCreds.url);
 
 mongoose.connection.on("open", function() {
-	console.log("Mongo connected");
+  console.log("Mongo connected");
 });
 
 mongoose.connection.on("error", function(err) {
-	console.log("Connection error: " + err);
+  console.log("Connection error: " + err);
 });
 
 process.on("SIGINT", function() {
-	mongoose.connection.close(function() {
-		console.log("Closing mongo connection.");
-		process.exit(0);
-	});
+  mongoose.connection.close(function() {
+    console.log("Closing mongo connection.");
+    process.exit(0);
+  });
 });
 
 require("./models/menuSchema");
