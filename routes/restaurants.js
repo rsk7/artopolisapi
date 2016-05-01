@@ -4,14 +4,48 @@ var router = express.Router();
 var mongoose = require("mongoose");
 var RestaurantModel = mongoose.model("Restaurant");
 
-/* GET users listing. */
 router.get('/', function(req, res, next) {
-	var restaurant = new RestaurantModel({
-		name: "New"
+	RestaurantModel.find({}, function(err, restaurants) {
+		if (err) next(err);
+		res.send(restaurants)
 	});
-	restaurant.save(function (err) {
-		if (err) res.send("Error");
+});
+
+router.get('/:id', function(req, res, next) {
+	var id = req.params.id;
+	RestaurantModel.findById(id, function(err, restaurant) {
+		if (err) next(err);
 		res.send(restaurant);
+	});
+});
+
+router.put('/:id', function(req, res, next) {
+	var id = req.params.id;
+	var updates = req.body;
+	RestaurantModel.findByIdAndUpdate(id, 
+		{$set: updates}, 
+		{new: true}, 
+		function(err, restaurant) {
+			if (err) next(err);
+			if (restaurant) res.send(restaurant);
+			next();
+		});
+});
+
+router.delete('/:id', function(req, res, next) {
+	var id = req.params.id;
+	RestaurantModel.findByIdAndRemove(id, function(err, restaurant) {
+		if (err) next(err);
+		res.send(restaurant);
+	});
+});
+
+router.post("/", function(req, res, next) {
+	var restaurant = new RestaurantModel(req.body);
+	restaurant.save(function(err) {
+		if (err) next(err);
+		if (restaurant) res.send(restaurant);
+		next();
 	});
 });
 
