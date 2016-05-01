@@ -5,6 +5,10 @@ var logger = require('morgan');
 var cookieParser = require('cookie-parser');
 var bodyParser = require('body-parser');
 
+// models
+require("./db");
+
+// routes
 var routes = require('./routes/index');
 var users = require('./routes/users');
 var restaurants = require('./routes/restaurants');
@@ -57,6 +61,5 @@ app.use(function(err, req, res, next) {
     error: {}
   });
 });
-
 
 module.exports = app;
