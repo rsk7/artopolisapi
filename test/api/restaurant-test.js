@@ -4,6 +4,8 @@ var chai = require("chai");
 chai.use(require("chai-things"));
 var expect = chai.expect;
 
+
+// API tests
 describe("Restaurants API", function() {
   var restaurantResource;
 
