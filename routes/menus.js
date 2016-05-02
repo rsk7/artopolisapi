@@ -27,8 +27,8 @@ router.put("/:id", function(req, res, next) {
     {new: true},
     function(err, menu) {
       if (err) next(err);
-      if (menu) res.send(menu);
-      next();
+      if (!menu) next();
+      else res.send(menu);
     });
 });
 
@@ -44,8 +44,8 @@ router.post("/", function(req, res, next) {
   var menu = new MenuModel(req.body);
   menu.save(function(err) {
     if (err) next(err);
-    if (menu) res.send(menu);
-    next();
+    if (!menu) next();
+    else res.send(menu);
   });
 });
 

@@ -2,11 +2,11 @@ var mongoose = require("mongoose");
 var mongoCreds = require("./.creds/mongo");
 
 // connecting to mongo
-console.log("Connecting: " + mongoCreds.url);
+// console.log("Connecting: " + mongoCreds.url);
 mongoose.connect(mongoCreds.url);
 
 mongoose.connection.on("open", function() {
-  console.log("Mongo connected");
+  // console.log("Mongo connected");
 });
 
 mongoose.connection.on("error", function(err) {
