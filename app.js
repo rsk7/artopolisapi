@@ -40,6 +40,12 @@ app.use(function(req, res, next) {
   next(err);
 });
 
+// catch 400 requests
+app.use(function(err, req, res, next) {
+  if (err.errors) err.status = 400;
+  next(err);
+});
+
 // error handlers
 
 // development error handler

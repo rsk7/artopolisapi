@@ -81,6 +81,13 @@ describe("Restaurants API", function() {
       .send({ name: "put update" })
       .expect(404, done);
   });
+
+  it("create a restaurant without a name", function(done) {
+    request(app)
+      .post("/restaurants")
+      .send({})
+      .expect(400, done);
+  });
 });
 
 

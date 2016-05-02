@@ -7,7 +7,7 @@ var RestaurantModel = mongoose.model("Restaurant");
 router.get('/', function(req, res, next) {
   RestaurantModel.find({}, function(err, restaurants) {
     if (err) next(err);
-    res.send(restaurants);
+    else res.send(restaurants);
   });
 });
 
@@ -15,7 +15,7 @@ router.get('/:id', function(req, res, next) {
   var id = req.params.id;
   RestaurantModel.findById(id, function(err, restaurant) {
     if (err) next(err);
-    if (!restaurant) next();
+    else if (!restaurant) next();
     else res.send(restaurant);
   });
 });
@@ -28,7 +28,7 @@ router.put('/:id', function(req, res, next) {
     {new: true}, 
     function(err, restaurant) {
       if (err) next(err);
-      if (!restaurant) next();
+      else if (!restaurant) next();
       else res.send(restaurant);
     });
 });
@@ -37,7 +37,7 @@ router.delete('/:id', function(req, res, next) {
   var id = req.params.id;
   RestaurantModel.findByIdAndRemove(id, function(err, restaurant) {
     if (err) next(err);
-    if (!restaurant) next();
+    else if (!restaurant) next();
     else res.send(restaurant);
   });
 });
@@ -46,7 +46,6 @@ router.post("/", function(req, res, next) {
   var restaurant = new RestaurantModel(req.body);
   restaurant.save(function(err) {
     if (err) next(err);
-    if (!restaurant) next();
     else res.send(restaurant);
   });
 });
