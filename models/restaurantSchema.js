@@ -3,7 +3,7 @@ var Schema = mongoose.Schema;
 
 var RestaurantSchema = new Schema({
   name: { type: String, required: true },
-  location: { type: String },
+  location: { type: String, required: true },
   menus: [Schema.Types.ObjectId]
 });
 

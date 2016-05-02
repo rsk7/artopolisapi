@@ -10,7 +10,11 @@ describe("Restaurants API", function() {
   var restaurantResource;
 
   it("create a restaurant", function(done) {
-    var restaurant = { name: "Test Restaurant" };
+    var restaurant = { 
+      name: "Test Restaurant",
+      location: "New location"
+    };
+    
     request(app)
       .post("/restaurants")
       .send(restaurant)

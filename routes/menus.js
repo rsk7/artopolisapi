@@ -7,7 +7,7 @@ var MenuModel = mongoose.model("Menu");
 router.get("/", function(req, res, next) {
   MenuModel.find({}, function(err, menus) {
       if (err) next(err);
-      res.send(menus);
+      else res.send(menus);
   });
 });
 
@@ -15,7 +15,8 @@ router.get("/:id", function(req, res, next) {
   var id = req.params.id;
   MenuModel.findById(id, function(err, menu) {
       if (err) next(err);
-      res.send(menu);
+      else if (!menu) next();
+      else res.send(menu);
   });
 });
 
@@ -36,7 +37,8 @@ router.delete("/:id", function(req, res, next) {
   var id = req.params.id;
   MenuModel.findByIdAndRemove(id, function(err, menu) {
     if (err) next(err);
-    res.send(menu);
+    else if (!menu) next();
+    else res.send(menu);
   });
 });
 
@@ -44,7 +46,7 @@ router.post("/", function(req, res, next) {
   var menu = new MenuModel(req.body);
   menu.save(function(err) {
     if (err) next(err);
-    if (!menu) next();
+    else if (!menu) next();
     else res.send(menu);
   });
 });

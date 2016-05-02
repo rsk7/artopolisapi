@@ -9,13 +9,15 @@ var MenuItemSchema = new Schema({
   customizations: [String]
 });
 
+var hoursSchema = new Schema({
+  start: { type: Date, required: true },
+  end: { type: Date, required: true }
+});
+
 var MenuSchema = new Schema({
   menuItems: { type: [MenuItemSchema], required: true },
   description: String,
-  hours: { 
-    start: { type: Date, required: true }, 
-    end: { type: Date, required: true }
-  }
+  hours: hoursSchema
 });
 
 mongoose.model("Menu", MenuSchema);

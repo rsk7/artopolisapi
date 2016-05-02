@@ -41,6 +41,7 @@ app.use(function(req, res, next) {
 });
 
 // catch 400 requests
+// err.errors set by mongoose validators
 app.use(function(err, req, res, next) {
   if (err.errors) err.status = 400;
   next(err);
