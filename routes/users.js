@@ -30,8 +30,8 @@ module.exports = function(passport) {
     // handle the callback after facebook has authenticated the user
     router.get('/auth/facebook/callback',
         passport.authenticate('facebook', {
-            successRedirect : '/profile',
-            failureRedirect : '/'
+            successRedirect : '/users/profile',
+            failureRedirect : '/users/'
         }));
 
     // route for logging out
