@@ -1,5 +1,5 @@
 var mongoose = require("mongoose");
-var mongoCreds = require("./.creds/mongo");
+var mongoCreds = require("../.creds/mongo");
 
 // connecting to mongo
 // console.log("Connecting: " + mongoCreds.url);
@@ -20,6 +20,6 @@ process.on("SIGINT", function() {
   });
 });
 
-require("./models/menuSchema");
-require("./models/restaurantSchema");
+require("../models/menuSchema");
+require("../models/restaurantSchema");
 
