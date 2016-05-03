@@ -4,13 +4,17 @@ var favicon = require('serve-favicon');
 var logger = require('morgan');
 var cookieParser = require('cookie-parser');
 var bodyParser = require('body-parser');
+var passport = require('passport');
+var flash = require('connect-flash');
+var session = require('express-session');
 
-// models
-require("./db");
+// DB
+require("./config/db");
+require('./config/passport')(passport); // pass passport for configuration
 
 // routes
 var routes = require('./routes/index');
-var users = require('./routes/users');
+var users = require('./routes/users')(router, passport);
 var restaurants = require('./routes/restaurants');
 var menus = require('./routes/menus');
 
@@ -28,10 +32,19 @@ app.use(bodyParser.urlencoded({ extended: false }));
 app.use(cookieParser());
 app.use(express.static(path.join(__dirname, 'public')));
 
+// required for passport
+app.use(session({ secret: 'ilovescotchscotchyscotchscotch' })); // session secret
+app.use(passport.initialize());
+app.use(passport.session()); // persistent login sessions
+app.use(flash()); // use connect-flash for flash messages stored in session
+
+
 app.use('/', routes);
 app.use('/users', users);
 app.use('/restaurants', restaurants);
 app.use('/menus', menus);
+
+require('./app/routes.js')(app, passport); // load our routes and pass in our app and fully configured passport
 
 // catch 404 and forward to error handler
 app.use(function(req, res, next) {
@@ -39,6 +52,7 @@ app.use(function(req, res, next) {
   err.status = 404;
   next(err);
 });
+
 
 // error handlers
 

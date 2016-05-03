@@ -1,36 +1,33 @@
 0 info it worked if it ends with ok
-1 verbose cli [ 'C:\\Program Files\\nodejs\\node.exe',
-1 verbose cli   'C:\\Program Files\\nodejs\\node_modules\\npm\\bin\\npm-cli.js',
-1 verbose cli   'run',
-1 verbose cli   'start' ]
-2 info using npm@3.8.3
-3 info using node@v5.10.0
+1 verbose cli [ '/usr/local/bin/node', '/usr/local/bin/npm', 'start' ]
+2 info using npm@3.5.3
+3 info using node@v4.2.4
 4 verbose run-script [ 'prestart', 'start', 'poststart' ]
 5 info lifecycle artopolisapi@0.0.0~prestart: artopolisapi@0.0.0
 6 silly lifecycle artopolisapi@0.0.0~prestart: no script for prestart, continuing
 7 info lifecycle artopolisapi@0.0.0~start: artopolisapi@0.0.0
 8 verbose lifecycle artopolisapi@0.0.0~start: unsafe-perm in lifecycle true
-9 verbose lifecycle artopolisapi@0.0.0~start: PATH: C:\Program Files\nodejs\node_modules\npm\bin\node-gyp-bin;C:\Users\ravik\github\artopolisapi\node_modules\.bin;C:\Program Files\nodejs;C:\ProgramData\Oracle\Java\javapath;C:\windows\system32;C:\windows;C:\windows\System32\Wbem;C:\windows\System32\WindowsPowerShell\v1.0\;C:\Program Files\nodejs\;C:\Program Files (x86)\Skype\Phone\;C:\RailsInstaller\Git\cmd;C:\RailsInstaller\Ruby2.2.0\bin;C:\Program Files (x86)\Microsoft VS Code\bin;C:\Users\ravik\AppData\Roaming\npm;C:\Program Files\Sublime Text 3;C:\Program Files\R\R-3.2.5\bin;C:\Program Files\MongoDB\Server\3.2\bin
-10 verbose lifecycle artopolisapi@0.0.0~start: CWD: C:\Users\ravik\github\artopolisapi
-11 silly lifecycle artopolisapi@0.0.0~start: Args: [ '/d /s /c', 'node ./bin/www' ]
+9 verbose lifecycle artopolisapi@0.0.0~start: PATH: /usr/local/lib/node_modules/npm/bin/node-gyp-bin:/Users/omarkiyani/Documents/xcodeapps/artopolisapi/node_modules/.bin:/Users/omarkiyani/Library/Android/sdk/tools:/Users/omarkiyani/Library/Android/sdk:/Users/omarkiyani/Library/Android/sdk/platform-tools:/usr/local/bin:/usr/local/bin:/usr/bin:/bin:/usr/sbin:/sbin:/opt/X11/bin:/usr/local/git/bin:/usr/texbin:/bin:/usr/local/ec2/ec2-api-tools-1.7.3.2/bin:/usr/local/mongodb/bin
+10 verbose lifecycle artopolisapi@0.0.0~start: CWD: /Users/omarkiyani/Documents/xcodeapps/artopolisapi
+11 silly lifecycle artopolisapi@0.0.0~start: Args: [ '-c', 'node ./bin/www' ]
 12 silly lifecycle artopolisapi@0.0.0~start: Returned: code: 1  signal: null
 13 info lifecycle artopolisapi@0.0.0~start: Failed to exec start script
 14 verbose stack Error: artopolisapi@0.0.0 start: `node ./bin/www`
 14 verbose stack Exit status 1
-14 verbose stack     at EventEmitter.<anonymous> (C:\Program Files\nodejs\node_modules\npm\lib\utils\lifecycle.js:239:16)
-14 verbose stack     at emitTwo (events.js:100:13)
-14 verbose stack     at EventEmitter.emit (events.js:185:7)
-14 verbose stack     at ChildProcess.<anonymous> (C:\Program Files\nodejs\node_modules\npm\lib\utils\spawn.js:24:14)
-14 verbose stack     at emitTwo (events.js:100:13)
-14 verbose stack     at ChildProcess.emit (events.js:185:7)
-14 verbose stack     at maybeClose (internal/child_process.js:850:16)
-14 verbose stack     at Process.ChildProcess._handle.onexit (internal/child_process.js:215:5)
+14 verbose stack     at EventEmitter.<anonymous> (/usr/local/lib/node_modules/npm/lib/utils/lifecycle.js:232:16)
+14 verbose stack     at emitTwo (events.js:87:13)
+14 verbose stack     at EventEmitter.emit (events.js:172:7)
+14 verbose stack     at ChildProcess.<anonymous> (/usr/local/lib/node_modules/npm/lib/utils/spawn.js:24:14)
+14 verbose stack     at emitTwo (events.js:87:13)
+14 verbose stack     at ChildProcess.emit (events.js:172:7)
+14 verbose stack     at maybeClose (internal/child_process.js:818:16)
+14 verbose stack     at Process.ChildProcess._handle.onexit (internal/child_process.js:211:5)
 15 verbose pkgid artopolisapi@0.0.0
-16 verbose cwd C:\Users\ravik\github\artopolisapi
-17 error Windows_NT 10.0.10586
-18 error argv "C:\\Program Files\\nodejs\\node.exe" "C:\\Program Files\\nodejs\\node_modules\\npm\\bin\\npm-cli.js" "run" "start"
-19 error node v5.10.0
-20 error npm  v3.8.3
+16 verbose cwd /Users/omarkiyani/Documents/xcodeapps/artopolisapi
+17 error Darwin 14.0.0
+18 error argv "/usr/local/bin/node" "/usr/local/bin/npm" "start"
+19 error node v4.2.4
+20 error npm  v3.5.3
 21 error code ELIFECYCLE
 22 error artopolisapi@0.0.0 start: `node ./bin/www`
 22 error Exit status 1
