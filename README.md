@@ -7,7 +7,7 @@
 Create a file `./.creds/mongo.json` with `{ "url": mongo_url }` as contents.
 
 #### Facebook credentials
-Create a file `./.creds/auth.js` with facebook creds
+Create a file `./.creds/auth.js` with facebook creds.
 
 #### Start server
 `npm start`
