@@ -7,7 +7,7 @@
 Create a file `./.creds/mongo.json` with `{ "url": mongo_url }` as contents.
 
 #### Start server
-`npm run start`
+`npm start`
 
 #### Run api tests
 `npm run test:api`
