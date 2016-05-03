@@ -3,7 +3,8 @@ var LocalStrategy    = require('passport-local').Strategy;
 var FacebookStrategy = require('passport-facebook').Strategy;
 
 // load up the user model
-var User = require('../models/userSchema');
+var mongoose = require("mongoose");
+var User = mongoose.model("User");
 
 // load the auth variables
 var configAuth = require('../.creds/auth');

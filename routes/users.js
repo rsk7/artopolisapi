@@ -1,11 +1,42 @@
 var express = require('express');
 var router = express.Router();
 
+var mongoose = require("mongoose");
+var UserModel = mongoose.model("User");
+
 /* GET users listing. */
 module.exports = function(passport) {
 
+  router.post("/", function(req, res, next) {
+    var user = new UserModel(req.body);
+    user.save(function(err) {
+      if (err) next(err);
+      else res.send(user);
+    });
+  });
+
+  router.get("/", function(req, res) {
+    UserModel.find({}, function(err, user) {
+      if (err) next(err);
+      else res.send(user);
+    });
+  });
+
+  router.put("/:id", function(req, res) {
+    var id = req.params.id;
+    var updates = req.body;
+    UserModel.findByIdAndUpdate(id, 
+      {$set: updates}, 
+      {new: true}, 
+      function(err, user) {
+        if (err) next(err);
+        else if (!user) next();
+        else res.send(user);
+      });
+  });
+
     // route for home page
-    router.get('/', function(req, res) {
+    router.get('/index', function(req, res) {
         res.render('index.ejs'); // load the index.ejs file
     });
 
@@ -39,6 +70,7 @@ module.exports = function(passport) {
         req.logout();
         res.redirect('/');
     });
+
     return router;
 };
 

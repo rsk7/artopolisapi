@@ -20,6 +20,7 @@ process.on("SIGINT", function() {
   });
 });
 
+require("../models/userSchema");
 require("../models/menuSchema");
 require("../models/restaurantSchema");
 
