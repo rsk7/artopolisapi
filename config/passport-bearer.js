@@ -3,13 +3,15 @@ var BearerStrategy = require("passport-http-bearer").Strategy;
 var mongoose = require("mongoose");
 var User = mongoose.model("User");
 
-var request = require("request");
-var verificationUrl = "https://graph.facebook.com/me?access_token=";
+var fbgraph = require("fbgraph");
+var authConfig = require("../.creds/auth");
+fbgraph.setAppSecret(authConfig.facebookAuth.clientSecret);
 
 function verifyToken(token, callback) {
-  request(verficationUrl + token, function(err, resp) {
+  fbgraph.setAccessToken(token);
+  fbgraph.get("me", function(err, res) {
     if (err) callback(error);
-    else callback(null, JSON.parse(body));
+    else callback(null, res);
   });
 }
 
