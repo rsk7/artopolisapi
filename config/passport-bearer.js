@@ -36,6 +36,7 @@ module.exports = function(passport) {
       User.findOne({"facebook.token": token}, function(err, user) {
         if (err) return done(err);
         if (!user) return handleNewToken(token, done);
+        // change this scope to be more than just read
         return done(null, user, { scope: "read" });
       });
     }
