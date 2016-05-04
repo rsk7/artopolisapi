@@ -62,7 +62,7 @@ describe("Menus API", function(){
         if (err) done(err);
         expect(resp.body).to.have.property("_id", menuResource._id);
         expect(resp.body.menuItems).to.include.something.with.property("name", "Item 2");
-        expect(resp.body.menuItems).to.include.something.with.property("price", "300");
+        expect(resp.body.menuItems).to.include.something.with.property("price", 300);
         expect(resp.body).to.have.property("description", update.description);
         done();
       });
@@ -80,7 +80,7 @@ describe("Menus API", function(){
       });
   });
 
-  it("delete menu", function() {
+  it("delete menu", function(done) {
     request(app)
       .delete("/menus/" + menuResource._id)
       .expect(200, done);
