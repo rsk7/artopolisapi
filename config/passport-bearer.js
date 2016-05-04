@@ -26,7 +26,7 @@ function createTempUser(fbUser, token) {
 function handleNewToken(token, done) {
   verifyToken(token, function(err, fbUser) {
     if (err) done(err);
-    else done(null, createTempUser(fbUser));
+    else done(null, createTempUser(fbUser), { scope: "read" });
   });
 }
 
@@ -36,7 +36,7 @@ module.exports = function(passport) {
       User.findOne({"facebook.token": token}, function(err, user) {
         if (err) return done(err);
         if (!user) return handleNewToken(token, done);
-        return done(null, user, {scope: "read"});
+        return done(null, user, { scope: "read" });
       });
     }
   ));
