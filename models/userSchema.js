@@ -7,7 +7,8 @@ var userSchema = mongoose.Schema({
     name: String,
     email: String,
     gender: String,
-    age: Number }
+    age: Number 
+  }
 });
 
 mongoose.model("User", userSchema);

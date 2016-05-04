@@ -10,11 +10,15 @@ var session = require('express-session');
 
 // DB
 require("./config/db");
-require('./config/passport')(passport); // pass passport for configuration
+require("./config/passport-bearer")(passport);
+
+// just for example, not going to be used by api
+require('./config/passport-facebook')(passport); // pass passport for configuration
 
 // routes
+var fbuserauth = require("./routes/fbuserauth")(passport);
 var routes = require('./routes/index');
-var users = require('./routes/users')(passport);
+var users = require('./routes/users');
 var restaurants = require('./routes/restaurants');
 var menus = require('./routes/menus');
 
@@ -35,15 +39,15 @@ app.use(bodyParser.urlencoded({ extended: false }));
 app.use(cookieParser());
 app.use(express.static(path.join(__dirname, 'public')));
 
-// required for passport
-app.use(session({ secret: 'ilovescotchscotchyscotchscotch' })); // session secret
+app.use(session({ secret: 'ilovescotchscotchyscotchscotch' })); // session secret not required for api
 app.use(passport.initialize());
-app.use(passport.session()); // persistent login sessions
-app.use(flash()); // use connect-flash for flash messages stored in session
+app.use(passport.session()); // persistent login sessions only for fb demo
+app.use(flash()); // use connect-flash for flash messages stored in session also only for fb demo
 
 
 app.use('/', routes);
 app.use('/users', users);
+app.use('/users', fbuserauth); 
 app.use('/restaurants', restaurants);
 app.use('/menus', menus);
 

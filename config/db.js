@@ -1,6 +1,11 @@
 var mongoose = require("mongoose");
 var mongoCreds = require("../.creds/mongo");
 
+// Schema setup
+require("../models/userSchema");
+require("../models/menuSchema");
+require("../models/restaurantSchema");
+
 // connecting to mongo
 // console.log("Connecting: " + mongoCreds.url);
 mongoose.connect(mongoCreds.url);
@@ -20,7 +25,4 @@ process.on("SIGINT", function() {
   });
 });
 
-require("../models/userSchema");
-require("../models/menuSchema");
-require("../models/restaurantSchema");
 
