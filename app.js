@@ -48,8 +48,8 @@ app.use(flash()); // use connect-flash for flash messages stored in session also
 
 
 app.use('/', routes);
-app.use('/users', users);
 app.use('/users', fbuserauth); 
+app.use('/users', users);
 app.use('/restaurants', restaurants);
 app.use('/menus', menus);
 

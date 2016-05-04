@@ -14,7 +14,6 @@ describe("Restaurants API", function() {
       name: "Test Restaurant",
       location: "New location"
     };
-    
     request(app)
       .post("/restaurants")
       .send(restaurant)
