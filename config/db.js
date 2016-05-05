@@ -5,6 +5,7 @@ var mongoCreds = require("../.creds/mongo");
 require("../models/userSchema");
 require("../models/menuSchema");
 require("../models/restaurantSchema");
+require("../models/orderSchema");
 
 // connecting to mongo
 // console.log("Connecting: " + mongoCreds.url);

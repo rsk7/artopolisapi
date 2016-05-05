@@ -28,6 +28,7 @@ function createTempUser(fbUser, token) {
 function handleNewToken(token, done) {
   verifyToken(token, function(err, fbUser) {
     if (err) done(err);
+    // TODO: create a user with limited access, so the client can register
     else done(null, createTempUser(fbUser), { scope: "read" });
   });
 }
@@ -35,6 +36,7 @@ function handleNewToken(token, done) {
 module.exports = function(passport) {
   passport.use(new BearerStrategy(
     function(token, done) {
+      // TODO: cache tokens that we've already seen
       User.findOne({"facebook.token": token}, function(err, user) {
         if (err) return done(err);
         if (!user) return handleNewToken(token, done);
