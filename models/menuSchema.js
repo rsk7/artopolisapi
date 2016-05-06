@@ -14,6 +14,8 @@ var hoursSchema = new Schema({
   end: { type: Date, required: true }
 });
 
+
+
 var MenuSchema = new Schema({
   menuItems: { type: [MenuItemSchema], required: true },
   description: String,
